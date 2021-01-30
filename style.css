@@ -33,10 +33,12 @@ nav ul li a{
     color: #fff;
     padding: 10px;
     text-transform: uppercase;
+    text-decoration: none;
 }
 nav ul li a:hover, a.active{
     background-color: #3352F2;
     border-radius: 5px;
+    color: #fff;
 }
 .main-content{
     display: grid;
@@ -50,6 +52,7 @@ nav ul li a:hover, a.active{
     padding: 25px;
     border-radius: 5px;
     float: left;
+    z-index: 0;
 }
 .booking-form h3{
     margin: 10px 0px;
@@ -65,10 +68,22 @@ nav ul li a:hover, a.active{
 .inp-width{
     min-width: 300px;
 }
-.plus-minus-btn button{
+.plus-minus-btn {
+    display: flex;
+}
+.plus-minus-btn button {
+    background-color: dodgerblue;
+    display: inline;
     font-size: 20px;
     padding: 5px 12px;
-    margin-top: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 5px;
+    margin: 20px 5px 0 5px;
+    cursor: pointer;
+
 }
 .booking-form  .calculations{
     margin: 10px 0;
@@ -113,8 +128,54 @@ nav ul li a:hover, a.active{
     color: #fff;
     font-weight: 500;
     background-color:  #3352F2;
+    cursor: pointer;
 }
 .amount{
     display: flex;
     justify-content: space-between;
+}
+
+#modal {
+    display: none;
+    height: 120vh;
+    width: 100%;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+   
+}
+
+.modal-body {
+    background-color: #fff;
+    padding: 40px 50px;
+    text-align: center;
+    border-radius: 15px;
+    z-index: 12;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#modal img {
+    width: 50%;
+    display: block;
+    margin: 0 auto;  
+}
+
+#main-content {
+    display: block;
+}
+
+#modal button {
+    padding: 8px 25px;
+    background-color: dodgerblue;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin: 10px 0;
+    cursor: pointer;
 }
