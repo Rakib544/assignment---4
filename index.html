@@ -67,8 +67,8 @@
                     <input id="economics" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <button class="btn btn-primary" onclick="handleTicketChange(true, 'economics')">+</button>
-                    <button class="btn btn-primary" onclick="handleTicketChange(false, 'economics')">-</button>
+                    <button onclick="handleTicketChange(true, 'economics')">+</button>
+                    <button onclick="handleTicketChange(false, 'economics')">-</button>
 
                 </div>
             </div>
@@ -115,6 +115,8 @@
         <div class="modal-body">
             <img src="images/successful.png" class="center" alt="" />
             <h2>Payment Successful !</h2>
+            <p>You have book <strong id="totalFirstClassTicket">00</strong> First Class ticket </p>
+            <p>You have book <strong id="totalEconomicsTicket">00</strong> Economics ticket.</p>
             <p>We are delighted to inform you that we received your payments</p>
             <button onclick="handleModal(false)">Ok</button>
         </div>
@@ -186,6 +188,11 @@
             }else {
                 document.getElementById('modal').style.display = "none";
             }
+
+            const economicTicket = document.getElementById('economics').value;
+            document.getElementById('totalEconomicsTicket').innerText = economicTicket;
+            const firstClassTicket = document.getElementById('first-class').value;
+            document.getElementById('totalFirstClassTicket').innerText = firstClassTicket;
         }
 
     </script>
