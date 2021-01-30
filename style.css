@@ -160,9 +160,9 @@ nav ul li a:hover, a.active{
 }
 
 #modal img {
-    width: 50%;
+    width: 15%;
     display: block;
-    margin: 0 auto;  
+    margin: 10px auto;  
 }
 
 #main-content {
