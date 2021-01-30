@@ -179,6 +179,10 @@ nav ul li a:hover, a.active{
     margin: 10px 0;
     cursor: pointer;
 }
+.modal-body h2 {
+    margin-bottom: 20px;
+}
  .modal-body p {
-     line-height: 40px;
+     line-height: 30px;
+     font-weight: bold;
  }
