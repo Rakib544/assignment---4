@@ -186,6 +186,7 @@
             calculateSubTotalCost('subtotal-value');
             calculateVatCost('vat')
             calculateTotalCost('total');
+
             return totalTicket;
         }
 
@@ -224,6 +225,7 @@
             const vat = subTotal * 0.1;
 
             document.getElementById(vatId).innerText = vat;
+
             return vat;
         } 
 
@@ -246,6 +248,7 @@
             } else {
                 document.getElementById('modal').style.display = "none";
             }
+            
             calculateVatCost('modal-vat-value')
             calculateTotalCost('modal-total-value')
             calculateSubTotalCost('modal-subtotal-value');
