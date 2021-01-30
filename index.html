@@ -55,9 +55,8 @@
                     <input id="first-class" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <button class="btn btn-primary btn-sm mr-0"
-                        onclick="handleTicketChange(true, 'first-class')">+</button>
-                    <button class="btn btn-primary btn-sm" onclick="handleTicketChange(false, 'first-class')">-</button>
+                    <button onclick="handleTicketChange(true, 'first-class')" >+</button>
+                    <button onclick="handleTicketChange(false, 'first-class')">-</button>
                 </div>
             </div>
 
@@ -67,8 +66,8 @@
                     <input id="economics" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <button onclick="handleTicketChange(true, 'economics')">+</button>
-                    <button onclick="handleTicketChange(false, 'economics')">-</button>
+                    <button onclick="handleTicketChange(true, 'economics')" >+</button>
+                    <button onclick="handleTicketChange(false, 'economics')" >-</button>
 
                 </div>
             </div>
@@ -184,8 +183,10 @@
             }
 
             document.getElementById(ticketType).value = totalTicket;
-            calculateSubTotalCost();
-            calculateTotalCost();
+            calculateSubTotalCost('subtotal-value');
+            calculateVatCost('vat')
+            calculateTotalCost('total');
+            return totalTicket;
         }
 
 
@@ -205,26 +206,36 @@
 
 
         //calculating sub total cost
-        function calculateSubTotalCost() {
+        function calculateSubTotalCost(subTotalId) {
             const totalFirstClassTicketPrice = calculateTicketPrice('first-class');
             const totalEconomicsTicketPrice = calculateTicketPrice('economics');
             let subTotal = totalFirstClassTicketPrice + totalEconomicsTicketPrice;
 
-            document.getElementById('subtotal-value').innerText = subTotal;
+            document.getElementById(subTotalId).innerText = subTotal;
+
             return subTotal;
 
         }
 
 
-        //calculating total cost
-        function calculateTotalCost() {
-            const subTotal = calculateSubTotalCost();
+        //creating vat functionality
+        function calculateVatCost(vatId) {
+            const subTotal = calculateSubTotalCost('subtotal-value');
             const vat = subTotal * 0.1;
-            const total = subTotal + vat;
 
-            document.getElementById('vat').innerText = vat;
-            document.getElementById('total').innerText = total;
+            document.getElementById(vatId).innerText = vat;
             return vat;
+        } 
+
+
+        //calculating total cost
+        function calculateTotalCost(TotalCostId) {
+            const vat = calculateVatCost('vat')
+            const subTotal = calculateSubTotalCost('subtotal-value')
+            const total = subTotal + vat;
+            document.getElementById(TotalCostId).innerText = total;
+
+            return total;
         }
 
 
@@ -235,14 +246,18 @@
             } else {
                 document.getElementById('modal').style.display = "none";
             }
+            calculateVatCost('modal-vat-value')
+            calculateTotalCost('modal-total-value')
+            calculateSubTotalCost('modal-subtotal-value');
+            findTotalTicket('first-class', 'totalFirstClassTicket');
+            findTotalTicket('economics', 'totalEconomicsTicket');
+        }
 
-            const economicTicket = document.getElementById('economics').value;
-            document.getElementById('totalEconomicsTicket').innerText = economicTicket;
-            const firstClassTicket = document.getElementById('first-class').value;
-            document.getElementById('totalFirstClassTicket').innerText = firstClassTicket;
-            const subTotal = document.getElementById('modal-subtotal-value').innerText = calculateSubTotalCost();
-            const vat = document.getElementById('modal-vat-value').innerText = calculateTotalCost();
-            document.getElementById('modal-total-value').innerText = subTotal + vat;
+
+        //finding total ticket
+        function findTotalTicket(ticketType, displayTotalTicketId) {
+            const totalTicket = document.getElementById(ticketType).value;
+            document.getElementById(displayTotalTicketId).innerText = totalTicket;
         }
 
     </script>
